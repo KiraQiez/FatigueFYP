@@ -10,7 +10,7 @@ Welcome to **FatigueFYP**, a smart fatigue detection system that leverages **Con
 - 🧠 **Multi-Input Fusion Model** combining:
   - Grayscale Face Images
   - Facial Landmark Dotmaps
-  - 68-Point Landmark Coordinates
+  - 478-Point Landmark Coordinates
 - 📊 **Robust Performance**: Over **98% accuracy**
 - 🖥️ **Tkinter GUI Interface** with dual video feed + condition display
 - 🔄 **Temporal Consistency Logic** to avoid false alarms
