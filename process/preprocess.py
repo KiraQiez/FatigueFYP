@@ -21,7 +21,7 @@ mp_face = mp.solutions.face_detection.FaceDetection(
 mp_mesh = mp.solutions.face_mesh.FaceMesh(
     static_image_mode=True,
     max_num_faces=1,
-    refine_landmarks=True    # <-- turn on iris & lip refinement
+    refine_landmarks=True   
 )
 
 # Create output folders
