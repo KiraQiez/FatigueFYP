@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fatigue Detection App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">FatigueDetect</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container py-5">
+    <!-- Upload Form -->
+    <form id="upload-form" class="mb-5">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-9">
+          <label for="videoInput" class="form-label">Upload Your Video</label>
+          <input type="file" class="form-control" id="videoInput" accept="video/*" />
+        </div>
+        <div class="col-md-3 d-grid">
+          <button type="submit" class="btn btn-primary">Analyze</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Video & Results -->
+    <div class="row g-4">
+      <!-- Video Preview -->
+      <div class="col-md-8">
+        <div class="video-container ratio ratio-16x9 border rounded shadow-sm">
+          <video id="videoPreview" controls class="w-100 h-100" style="display: none;"></video>
+          <div id="videoPlaceholder" class="d-flex justify-content-center align-items-center placeholder-text">
+            <p>Video Preview</p>
+          </div>
+        </div>
+      </div>
+
+<!-- Right Column -->
+<div class="col-md-4 d-flex flex-column gap-4">
+
+  <!-- Crop View -->
+  <div class="card shadow-sm border-0">
+    <div class="card-header">Crop Video</div>
+    <div class="card-body">
+      <div class="ratio ratio-4x3 border rounded bg-light mb-2">
+        <video id="cropPreview" controls class="w-100 h-100" style="display: none;"></video>
+        <div id="cropPlaceholder" class="d-flex justify-content-center align-items-center placeholder-text">
+          <p>Crop View</p>
+        </div>
+      </div>
+      <p class="text-muted mb-0">Cropping functionality will be enabled soon.</p>
+    </div>
+  </div>
+
+  <!-- Detection Results -->
+  <div class="card shadow-sm border-0">
+    <div class="card-header">Fatigue Detection</div>
+    <div class="card-body">
+      <p><strong>Current Condition:</strong> <span id="status">--</span></p>
+      <p><strong>Confidence:</strong> <span id="confidence">--</span></p>
+      <p><strong>Total:</strong> <span id="confidence">--</span></p>
+      <p><strong>Status:</strong> <span id="confidence">--</span></p>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" id="confidenceBar" role="progressbar" style="width: 0%"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+    <!-- Divider -->
+    <hr class="my-5" />
+
+    <!-- Recent Uploads -->
+    <h4>Recent Uploads</h4>
+    <ul id="recent-list" class="list-group shadow-sm">
+      <li class="list-group-item text-center text-muted">No recent uploads.</li>
+    </ul>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const uploadForm = document.getElementById('upload-form');
+    const videoInput = document.getElementById('videoInput');
+    const videoPreview = document.getElementById('videoPreview');
+    const videoPlaceholder = document.getElementById('videoPlaceholder');
+    const recentList = document.getElementById('recent-list');
+    const status = document.getElementById('status');
+    const confidence = document.getElementById('confidence');
+    const confidenceBar = document.getElementById('confidenceBar');
+
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const file = videoInput.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        videoPreview.src = url;
+        videoPreview.style.display = 'block';
+        videoPlaceholder.style.display = 'none';
+
+        // Fake detection (mockup)
+        const fakeConfidence = Math.floor(Math.random() * 100) + 1;
+        const statusText = fakeConfidence > 60 ? "Fatigued" : "Alert";
+
+        status.textContent = statusText;
+        confidence.textContent = fakeConfidence + "%";
+        confidenceBar.style.width = fakeConfidence + "%";
+        confidenceBar.classList.toggle('bg-danger', fakeConfidence > 60);
+        confidenceBar.classList.toggle('bg-success', fakeConfidence <= 60);
+
+        // Update recent uploads
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = file.name;
+        if (recentList.querySelector('.text-muted')) {
+          recentList.innerHTML = '';
+        }
+        recentList.prepend(li);
+      }
+    });
+  </script>
+</body>
+</html>
