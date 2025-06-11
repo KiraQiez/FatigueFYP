@@ -1,4 +1,4 @@
-# FatigueFYP# 💤 FatigueFYP: Real-Time Fatigue Detection Using CNN + Facial Landmarks
+# 💤 FatigueFYP: Real-Time Fatigue Detection Using CNN + Facial Landmarks
 
 Welcome to **FatigueFYP**, a smart fatigue detection system that leverages **Convolutional Neural Networks (CNNs)** and **facial landmark analysis** for real-time monitoring of driver drowsiness. This project aims to prevent accidents by providing an accurate and lightweight fatigue recognition pipeline based on visual cues.
 
@@ -73,3 +73,7 @@ Preprocessed from **RLDD (Real-Life Drowsiness Dataset)**:
 
 ```bash
 pip install tensorflow opencv-python mediapipe pillow numpy
+
+
+# 🛡 Disclaimer
+This system is a prototype and should not be used in critical safety scenarios without further validation.

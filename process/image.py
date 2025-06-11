@@ -9,7 +9,7 @@ from scipy.ndimage import gaussian_filter
 
 # Configuration
 BASE_DIR = os.path.dirname(__file__)
-MODEL_PATH = os.path.join(BASE_DIR, 'fatigue_fusion_model_generator.h5')
+MODEL_PATH = os.path.join(BASE_DIR, 'fatigue_fusion_model_generator_80.h5')
 FACE_SIZE = 256
 DISPLAY_W, DISPLAY_H = 320, 240
 THRESHOLD = 0.5
