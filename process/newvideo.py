@@ -12,7 +12,7 @@ from collections import deque
 
 # Configuration
 BASE_DIR = os.path.dirname(__file__)
-MODEL_PATH = os.path.join(BASE_DIR,'..','model', 'fatigue_fusion_model_generator_80.h5')
+MODEL_PATH = os.path.join(BASE_DIR, '..','model','fatigue_fusion_model_generator_80.h5')
 FACE_SIZE = 256
 VIDEO_W, VIDEO_H = 320, 240
 THRESHOLD = 0.6
